@@ -8,14 +8,12 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Servir les fichiers statiques du dossier de build (dist)
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Pour toutes les autres requêtes, renvoyer l'index.html (Single Page App)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
+  console.log(`Serveur prêt sur le port ${PORT}`);
 });
