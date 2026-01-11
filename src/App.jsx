@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Rocket, Wallet, History, Settings } from 'lucide-react';
+import { Rocket, Wallet, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CrashGameUltimate = () => {
@@ -89,10 +89,6 @@ const CrashGameUltimate = () => {
     setCurrentBetActive(false);
   };
 
-  const handleBetClick = () => {
-    setIsBettingNext(!isBettingNext);
-  };
-
   return (
     <div className="min-h-screen bg-[#0b0e14] text-white font-sans overflow-hidden flex flex-col relative">
       <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[40%] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
@@ -180,7 +176,7 @@ const CrashGameUltimate = () => {
                 RETIRER {(betAmount * multiplier).toFixed(2)}
             </button>
         ) : (
-            <button onClick={handleBetClick} className={`w-full h-14 rounded-xl font-black text-lg uppercase transition-all flex flex-col items-center justify-center ${isBettingNext ? 'bg-rose-600' : 'bg-blue-600'}`}>
+            <button onClick={() => setIsBettingNext(!isBettingNext)} className={`w-full h-14 rounded-xl font-black text-lg uppercase transition-all flex flex-col items-center justify-center ${isBettingNext ? 'bg-rose-600' : 'bg-blue-600'}`}>
                 {isBettingNext ? "Pari Validé" : `Miser ${nextBetAmount} TON`}
                 {phase !== 'LOADING' && !isBettingNext && <span className="text-[10px] lowercase opacity-70">pour le prochain tour</span>}
             </button>
